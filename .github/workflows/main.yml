@@ -11,3 +11,6 @@
       steps:
         - name: Mostrar mensaje
           run: echo "Hola, este es mi primer mensaje"
+
+        - name: Fallo intensionado
+          run: exi 1
