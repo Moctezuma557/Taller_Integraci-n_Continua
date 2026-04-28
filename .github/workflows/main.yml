@@ -9,8 +9,13 @@
       runs-on: ubuntu-latest
 
       steps:
-        - name: Mostrar mensaje
-          run: echo "Hola, este es mi primer mensaje"
+        - name: Checkout del codigo
+          uses: actions/checkout@v4
 
-        - name: Fallo intensionado
-          run: exi 1
+        - name: Usar NODE JS
+          uses: actions/setup-node@v4
+          with:
+            node-version:'20'
+
+        -name: Construir app con node
+          run: npm install
