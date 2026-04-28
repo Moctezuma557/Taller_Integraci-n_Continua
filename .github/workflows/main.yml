@@ -1,29 +1,29 @@
-  name: Mi primer github action
-  
-  on: 
-    push:
-      branches: ["main"]
+name: Mi primer github action
 
-  jobs:
-    saludo:
-      runs-on: ubuntu-latest
+on:
+  push:
+    branches: ["main"]
 
-      steps:
-        - name: Checkout del codigo
-          uses: actions/checkout@v4
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-        - name: Usar NODE JS
-          uses: actions/setup-node@v4
-          with:
-            node-version:'20'
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v4
 
-        -name: Construir app con node
-         run: npm install
+      - name: Usar NODE JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-        -name: Verificar si app.js existe
-         run: |
-            if[! -f "GITHUB_WORKSPACE/app.js"]; then
-              echo "No se encontro app.js en la raíz"
-              exit 1
-            fi
-            echo "Se encontro app.js. Continuando con el workflow"
+      - name: Construir app con node
+        run: npm install
+
+      - name: Verificar si app.js existe
+        run: |
+          if [ ! -f "$GITHUB_WORKSPACE/app.js" ]; then
+            echo "No se encontro app.js en la raíz"
+            exit 1
+          fi
+          echo "Se encontro app.js. Continuando con el workflow"
